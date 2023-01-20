@@ -1,0 +1,32 @@
+Implement a program that takes a network address as input and gives an interface and next-hop addr as output
+
+Model a router:
+	-it'd be cool to dynamically add routes via some sort of REPL?
+		-else, you could just provide a "config" that set the routing table in question
+		-this would be easier and then you could have the config loaded in with interface assignments as well
+	
+	-have the "router" program take a destination address as input
+		-there's an algorythm discription on page 209 of TCP/IP Illustrated
+		-it'd be nice to create a state diagram
+			-the state modeled would be that of the forwarding table
+			-i think I might be confused...there's no state during forwarding
+			-the only state is that of the routing table, and a state diagram for that would be more like
+				a routing protocol state diagram...
+
+		-i think diagram would be high-level exactly for my reasons above, there's not much state
+			-all the heavy-lifting (aka state conf) happens during routing protocol exchange
+			-use this link for reference:
+				-https://www.researchgate.net/figure/Packet-forwarding-state-diagram_fig6_220429606 
+
+	-END GAME would be an interactive REPL
+		-program would start and optionally take a CONFIG as an argument
+		-the config would contain interface config and routing table config
+		-the program would have methods to dynamically change both interface and route configs from the REPL
+		-the interesting command would be the "SEND" command, which takes a destination address and interface recieved
+			on as input. Actually, you don't need interface recieved on. 
+		-the REPL would spit back a description of the route it matched, including:
+			- 32-bit destination address
+			- mask
+			- next-hop address
+			- interface
+		-the program could also be asked to "PRINT" the state of the routing table		
