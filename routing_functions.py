@@ -1,1 +1,1 @@
-# placeholdes for ADD DELETE SEND PRINT methods
+# placeholder for ADD DELETE SEND PRINT methods
